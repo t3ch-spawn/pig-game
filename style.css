@@ -168,8 +168,8 @@ main {
 }
 
 .hidden {
-  display: none;
-  transition: all 0.5s;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .top-nav {
@@ -200,7 +200,8 @@ main {
 }
 
 .score-window {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
   flex-direction: column;
   gap: 20px;
   position: absolute;
@@ -217,9 +218,13 @@ main {
   border-radius: 8px;
   justify-content: center;
   align-items: center;
+  transition: 0.3s ease-in-out;
 }
+
 .score-window.active {
   display: flex;
+  opacity: 1;
+  pointer-events: all;
 }
 
 .instructions {
@@ -243,6 +248,7 @@ main {
   padding: 6rem;
   font-size: 2rem;
   border-radius: 8px;
+  transition: all 0.5s;
 }
 
 .overlay {
@@ -250,6 +256,7 @@ main {
   height: 100%;
   width: 100%;
   z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .close {
