@@ -96,6 +96,7 @@ btnHold.addEventListener('click', () => {
         .querySelector(`.player--${activePlayer}`)
         .classList.remove('player--active');
       diceEl.classList.add('hidden');
+      alert(`player ${activePlayer + 1} WINS!!`);
     } else {
       // switch players
       switchPlayer();
