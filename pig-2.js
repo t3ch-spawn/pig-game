@@ -17,6 +17,7 @@ const scoreLimit = document.querySelector('.score-limit');
 const scoreWindow = document.querySelector('.score-window');
 const btnClose = document.querySelectorAll('.close');
 const overlay = document.querySelector('.overlay');
+const winMsg = document.querySelector('.win-message-window');
 
 let scores, currentScore, activePlayer, playing;
 
@@ -96,7 +97,11 @@ btnHold.addEventListener('click', () => {
         .querySelector(`.player--${activePlayer}`)
         .classList.remove('player--active');
       diceEl.classList.add('hidden');
-      alert(`player ${activePlayer + 1} WINS!!`);
+
+      // enabling pop up for wining player
+      winMsg.textContent = `player ${activePlayer + 1} wins!!`;
+      winMsg.classList.remove('hidden');
+      overlay.classList.remove('hidden');
     } else {
       // switch players
       switchPlayer();
@@ -135,4 +140,5 @@ overlay.addEventListener('click', () => {
   instructWindow.classList.add('hidden');
   overlay.classList.add('hidden');
   scoreWindow.classList.remove('active');
+  winMsg.classList.add('hidden');
 });

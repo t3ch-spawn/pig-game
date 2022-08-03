@@ -23,6 +23,7 @@ body {
   justify-content: center;
   gap: 20px;
   padding-bottom: 20px;
+  position: relative;
 }
 
 /* LAYOUT */
@@ -200,6 +201,7 @@ main {
 }
 
 .score-window {
+  display: flex;
   opacity: 0;
   pointer-events: none;
   flex-direction: column;
@@ -211,20 +213,20 @@ main {
   width: 50%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0);
   z-index: 2;
   padding: 3rem;
   font-size: 2rem;
   border-radius: 8px;
   justify-content: center;
   align-items: center;
-  transition: 0.3s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .score-window.active {
-  display: flex;
   opacity: 1;
   pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .instructions {
@@ -235,6 +237,10 @@ main {
   cursor: pointer;
 }
 
+.instruct-window.hidden {
+  transform: translate(-50%, -50%) scale(0);
+}
+
 .instruct-window {
   position: absolute;
   background-color: white;
@@ -243,12 +249,35 @@ main {
   width: 70%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   z-index: 2;
   padding: 6rem;
   font-size: 2rem;
   border-radius: 8px;
-  transition: all 0.5s;
+  transition: 0.5s ease-in-out;
+}
+
+.win-message-window.hidden {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.win-message-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+  transition: 0.5s ease-in-out;
+  z-index: 40;
+  height: 200px;
+  text-transform: uppercase;
+  font-size: 2rem;
 }
 
 .overlay {
@@ -256,6 +285,8 @@ main {
   height: 100%;
   width: 100%;
   z-index: 1;
+  transition: 0.5s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .close {
